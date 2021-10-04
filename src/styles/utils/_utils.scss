@@ -1,0 +1,69 @@
+// Visually hidden element.
+@mixin vhidden() {
+  opacity: 0;
+  visibility: hidden;
+}
+
+// Visually display element.
+@mixin vdisplay() {
+  opacity: 1;
+  visibility: visible;
+}
+
+// FontAwesome
+%fa,
+%fas {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900 !important;
+
+  @extend %fa-icon;
+}
+
+%far {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 400 !important;
+
+  @extend %fa-icon;
+}
+
+%fa-brand {
+  font-family: 'Font Awesome 5 Brands';
+  font-weight: 400 !important;
+
+  @extend %fa-icon;
+}
+
+// Overlay background
+@mixin overlay($bg: black, $alpha: 0.5, $z-index: 5) {
+  @include absolute(0,0,0,0);
+  background-color: rgba($bg, $alpha);
+  z-index: $z-index;
+}
+
+// PADDING TOP IMAGE
+@mixin paddingTop($width, $height) {
+  content: "";
+  display: block;
+  padding-top: percentage($height/$width);
+}
+
+// THEMES OPTION
+@mixin themify($themes: $themes-v2) {
+  @each $theme, $map in $themes {
+
+    .theme-#{$theme} & {
+      $theme-map: () !global;
+      @each $key, $submap in $map {
+        $value: map-get(map-get($themes, $theme), '#{$key}');
+        $theme-map: map-merge($theme-map, ($key: $value)) !global;
+      }
+
+      @content;
+      $theme-map: null !global;
+    }
+  }
+}
+
+@function themed($key) {
+  @return map-get($theme-map, $key);
+}

@@ -1,0 +1,14 @@
+.form-control,
+.custom-select {
+  box-shadow: none !important;
+
+  &:focus {
+    border-color: $border-color;
+  }
+}
+
+.form-control {
+  &::placeholder {
+    color: $gray-400;
+  }
+}

@@ -1,0 +1,115 @@
+{
+  "name": "moviedb",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^11.2.7",
+    "@testing-library/user-event": "^12.8.3",
+    "axios": "^0.21.1",
+    "colorthief": "^2.3.2",
+    "eslint": "^7.29.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-compat": "^3.9.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react": "^7.24.0",
+    "lodash": "^4.17.21",
+    "moment": "^2.29.1",
+    "node-sass": "^6.0.1",
+    "postcss-cli": "^8.3.1",
+    "postcss-preset-env": "^6.7.0",
+    "prettier": "^2.3.2",
+    "prop-types": "^15.7.2",
+    "querystring": "^0.2.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-helmet-async": "^1.0.9",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "4.0.3",
+    "slugify": "^1.5.3",
+    "stylelint-no-unsupported-browser-features": "^5.0.1",
+    "uuid": "^8.3.2",
+    "web-vitals": "^1.1.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "lint:js": "eslint --fix --quiet src/**/*.js",
+    "lint:css": "stylelint --fix src/styles/**/*.scss",
+    "format": "prettier --write \"src/**/*.+(js|jsx|json|yml|yaml|css|md|vue)\" \"!src/**/vendors/**/*.+(js|jsx|json|yml|yaml|css|md|vue)\""
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest",
+      "eslint:recommended",
+      "plugin:prettier/recommended",
+      "plugin:compat/recommended",
+      "plugin:react/recommended"
+    ],
+    "parserOptions": {
+      "ecmaVersion": 6,
+      "sourceType": "module",
+      "ecmaFeatures": {
+        "jsx": true
+      }
+    },
+    "plugins": [
+      "compat",
+      "prettier",
+      "react"
+    ],
+    "rules": {
+      "eqeqeq": "off",
+      "curly": "warn",
+      "no-console": "warn",
+      "no-unused-vars": "warn",
+      "prettier/prettier": "warn",
+      "compat/compat": "off",
+      "react/jsx-uses-react": "error",
+      "react/jsx-uses-vars": "warn",
+      "react/react-in-jsx-scope": "warn"
+    },
+    "globals": {
+      "Atomics": "readonly",
+      "ShareArrayBuffer": "readonly"
+    }
+  },
+  "stylelint": {
+    "plugins": [
+      "stylelint-no-unsupported-browser-features"
+    ],
+    "rules": {
+      "plugin/no-unsupported-browser-features": true
+    },
+    "ignoreFiles": [
+      "src/styles/**/vendors/**/*.scss"
+    ],
+    "defaultSeverity": "warning"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "postcss": {
+    "plugins": {
+      "postcss-preset-env": {},
+      "autoprefixer": {
+        "grid": "autoplace"
+      }
+    }
+  },
+  "prettier": {
+    "singleQuote": false
+  }
+}

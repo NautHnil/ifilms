@@ -1,0 +1,13 @@
+// @ Font-face
+$font-name: "FONT_NAME";
+$font-path: "/assets/fonts/FONT_PATH";
+$font-pathname: "FONT_PATHNAME";
+
+// Font-size 400 / Regular
+@font-face {
+  font-family: $font-name;
+  font-style: normal;
+  font-weight: 400;
+  src: url('#{$font-path}/woff/#{$font-pathname}.woff') format('woff'),
+  url('#{$font-path}/tff/#{$font-pathname}.ttf') format('ttf');
+}

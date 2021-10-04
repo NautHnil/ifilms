@@ -1,0 +1,86 @@
+#site-header {
+  width: 100%;
+  top: -80px;
+  left: 0;
+  z-index: 1030;
+
+  @include transition(all 0.3s ease);
+
+  .nav {
+    a {
+      display: block;
+    }
+
+    &-item {
+      position: relative;
+
+      &:hover {
+        .nav-link {
+          background-color: $gray-100;
+        }
+      }
+    }
+
+    &-sub {
+      background-color: $gray-100;
+
+      @include absolute();
+      @include rem(
+        (
+          min-width: 200px,
+          margin-top: 50px,
+          border-bottom: 3px solid $gray-200,
+        )
+      );
+      @include vhidden();
+      @include transition(all 0.25s ease);
+
+      ul {
+        @include rem(
+          (
+            padding: 5px 16px,
+          )
+        );
+
+        li {
+          @include rem(
+            (
+              padding: 5px 0,
+            )
+          );
+
+          &:not(:last-child) {
+            border-bottom: 1px solid $gray-200;
+          }
+        }
+      }
+
+      &.open {
+        margin-top: 0;
+
+        @include vdisplay();
+      }
+    }
+
+    .d-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(13, 1fr);
+
+      @include rem(
+        (
+          min-width: 400px,
+        )
+      );
+
+      li:last-child {
+        border-bottom: 1px solid $gray-200;
+      }
+    }
+  }
+
+  &.on-scroll {
+    position: fixed;
+    top: 0;
+  }
+}

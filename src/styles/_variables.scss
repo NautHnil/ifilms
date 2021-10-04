@@ -1,0 +1,311 @@
+//
+// Color system
+//
+
+$black: #000000;
+$white: #ffffff;
+
+// MovieDB
+$movie-green: #21d07a;
+$movie-green-light: lighten(#21d07a, 10%);
+$movie-dark: lighten($black, 5%);
+$movie-light: #dbdbdb;
+
+$arr-colors-name: ();
+$arr-colors-name: map-merge((), $arr-colors-name);
+
+$theme-colors: (
+  "movie-green": $movie-green,
+  "movie-green-light": $movie-green-light,
+  "movie-dark": $movie-dark,
+  "movie-light": $movie-light,
+);
+$theme-colors: map-merge((), $theme-colors);
+
+// Alerts
+//
+// Define alert colors, border radius, and padding.
+
+$alert-bg-level: 0;
+$alert-border-level: 0;
+$alert-color-level: 10;
+
+// Body
+//
+// Settings for the `<body>` element.
+
+$body-bg: $white;
+$body-color: $black;
+
+// Links
+//
+// Style anchor elements.
+
+$link-color: $movie-green;
+$link-decoration: none;
+// $link-hover-color: darken($movie-green, 5%);
+$link-hover-decoration: none;
+
+// Components
+//
+// Define common padding and border radius sizes and more.
+
+// Fonts
+//
+// Font, line-height, and color for body text, headings, and more.
+
+// stylelint-disable value-keyword-case
+$font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+  "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+  "Segoe UI Symbol", "Noto Color Emoji";
+$font-family-base: "Fira Sans", $font-family-sans-serif;
+
+$arr-font-family: ();
+$arr-font-family: map-merge((), $arr-font-family);
+
+// stylelint-enable value-keyword-case
+$spacer: 1rem;
+$spacer-px: 1px;
+$font-root: 16;
+$font-size-root: ($font-root * $spacer-px);
+$font-size-base: 1rem;
+$font-size-lg: (36 / $font-root * $spacer);
+$font-size-sm: (12 / $font-root * $spacer);
+
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semi-bold: 600;
+$font-weight-bold: 700;
+
+$arr-font-weight: (
+  "normal": $font-weight-normal,
+  "medium": $font-weight-medium,
+  "semi-bold": $font-weight-semi-bold,
+  "bold": $font-weight-bold,
+);
+$arr-font-weight: map-merge((), $arr-font-weight);
+
+$font-weight-base: $font-weight-normal;
+$line-height-base: 1.75;
+
+$h1-font-size: (56 / $font-root * $spacer); // 56px
+$h2-font-size: (44 / $font-root * $spacer); // 44px
+$h3-font-size: (28 / $font-root * $spacer); // 28px
+$h4-font-size: (24 / $font-root * $spacer); // 24px
+$h5-font-size: (20 / $font-root * $spacer); // 20px
+$h6-font-size: (16 / $font-root * $spacer); // 16px
+
+$arr-font-size: (
+  0: (
+    0 / $font-root * $spacer,
+  ),
+  10: (
+    10 / $font-root * $spacer,
+  ),
+  11: (
+    11 / $font-root * $spacer,
+  ),
+  12: (
+    12 / $font-root * $spacer,
+  ),
+  13: (
+    13 / $font-root * $spacer,
+  ),
+  14: (
+    14 / $font-root * $spacer,
+  ),
+  16: (
+    16 / $font-root * $spacer,
+  ),
+  18: (
+    18 / $font-root * $spacer,
+  ),
+  20: (
+    20 / $font-root * $spacer,
+  ),
+  22: (
+    22 / $font-root * $spacer,
+  ),
+  24: (
+    24 / $font-root * $spacer,
+  ),
+  28: (
+    28 / $font-root * $spacer,
+  ),
+  30: (
+    30 / $font-root * $spacer,
+  ),
+  32: (
+    32 / $font-root * $spacer,
+  ),
+  36: (
+    36 / $font-root * $spacer,
+  ),
+  40: (
+    40 / $font-root * $spacer,
+  ),
+  44: (
+    44 / $font-root * $spacer,
+  ),
+  48: (
+    48 / $font-root * $spacer,
+  ),
+  50: (
+    50 / $font-root * $spacer,
+  ),
+  56: (
+    56 / $font-root * $spacer,
+  ),
+  60: (
+    60 / $font-root * $spacer,
+  ),
+  80: (
+    80 / $font-root * $spacer,
+  ),
+  160: (
+    160 / $font-root * $spacer,
+  ),
+);
+$arr-font-size: map-merge((), $arr-font-size);
+
+$headings-font-weight: $font-weight-bold;
+$headings-line-height: 1.5;
+
+$arr-line-height: (
+  "1": 1,
+  "base": $line-height-base,
+  "2": 2,
+);
+$arr-line-height: map-merge((), $arr-line-height);
+
+// Size margin, padding
+
+$mp: ();
+// stylelint-disable-next-line scss/dollar-variable-default
+$mp: map-merge(
+  (
+    -50: (-50 / $font-root * $spacer),
+    -195: (-195 / $font-root * $spacer),
+    -85: (-85 / $font-root * $spacer),
+    -30: (-30 / $font-root * $spacer),
+    -15: (-15 / $font-root * $spacer),
+    -10: (-10 / $font-root * $spacer),
+    -8: (-8 / $font-root * $spacer),
+    -5: (-1 * $spacer * 3),
+    -4: (-1 * $spacer * 1.5),
+    -3: (-1 * $spacer),
+    -2: (-1 * $spacer * 0.5),
+    -1: (-1 * $spacer * 0.25),
+    0: 0,
+    1: ($spacer * 0.25),
+    2: ($spacer * 0.5),
+    3: $spacer,
+    4: ($spacer * 1.5),
+    5: ($spacer * 3),
+    8: (8 / $font-root * $spacer),
+    10: (10 / $font-root * $spacer),
+    12: (12 / $font-root * $spacer),
+    14: (14 / $font-root * $spacer),
+    15: (15 / $font-root * $spacer),
+    16: (16 / $font-root * $spacer),
+    18: (18 / $font-root * $spacer),
+    20: (20 / $font-root * $spacer),
+    24: (24 / $font-root * $spacer),
+    25: (25 / $font-root * $spacer),
+    30: (30 / $font-root * $spacer),
+    35: (35 / $font-root * $spacer),
+    40: (40 / $font-root * $spacer),
+    45: (45 / $font-root * $spacer),
+    50: (50 / $font-root * $spacer),
+    60: (60 / $font-root * $spacer),
+    70: (70 / $font-root * $spacer),
+    80: (80 / $font-root * $spacer),
+    90: (90 / $font-root * $spacer),
+    100: (100 / $font-root * $spacer),
+    105: (105 / $font-root * $spacer),
+    110: (110 / $font-root * $spacer),
+    120: (120 / $font-root * $spacer),
+    150: (150 / $font-root * $spacer),
+    160: (160 / $font-root * $spacer),
+    180: (180 / $font-root * $spacer)
+  ),
+  $mp
+);
+
+//$border-color: $it-divider;
+
+$border-radius: (4 / $font-root * $spacer);
+$border-radius-md: (8 / $font-root * $spacer);
+$border-radius-lg: (16 / $font-root * $spacer);
+$border-radius-sm: (2 / $font-root * $spacer);
+
+$box-shadow-sm: 0px 4px 10px rgba($black, 0.08);
+$box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.04), 0px 4px 8px rgba(0, 0, 0, 0.04),
+  0px 16px 24px rgba(0, 0, 0, 0.04), 0px 24px 32px rgba(0, 0, 0, 0.04);
+$box-shadow-lg: 0px 0px 1px rgba(0, 0, 0, 0.04), 0px 4px 8px rgba(0, 0, 0, 0.04),
+  0px 16px 24px rgba(0, 0, 0, 0.04), 0px 24px 32px rgba(0, 0, 0, 0.04);
+
+// Grid breakpoints
+//
+// Define the minimum dimensions at which your layout will change,
+// adapting to different screen sizes, for use in media queries.
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1440px,
+  xxxl: 1600px,
+);
+
+// Grid containers
+//
+// Define the maximum width of `.container` for different screen sizes.
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1320px,
+  xxxl: 1400px,
+);
+
+// Grid columns
+//
+// Set the number of columns and specify the width of the gutters.
+
+$grid-columns: 12;
+$grid-gutter-width: 30px;
+$grid-row-columns: 6;
+
+// Badges
+
+$badge-font-size: (12 / $font-root * $spacer);
+$badge-font-weight: $font-weight-medium;
+$badge-padding-y: (2 / $font-root * $spacer);
+$badge-padding-x: (10 / $font-root * $spacer);
+$badge-border-radius: $border-radius-sm;
+
+$badge-pill-padding-x: 0.6em;
+// Use a higher than normal value to ensure completely rounded edges when
+// customizing padding or font-size on labels.
+$badge-pill-border-radius: 10rem;
+
+// Form validation
+
+//$form-feedback-valid-color:         $it-divider;
+
+$form-feedback-icon-valid: "";
+$form-feedback-icon-invalid: "";
+
+// FontAwesome
+
+//$fa-font-path: "../fonts/fontawesome/";
+$fa-font-size-base: $font-size-base;
+
+//
+// Root
+//

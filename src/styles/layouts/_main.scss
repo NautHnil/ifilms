@@ -1,0 +1,26 @@
+.entry-header {
+  position: relative;
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  @include media-breakpoint-up(lg) {
+    background-size: 100%;
+  }
+
+  &__backdrop {
+    z-index: 1;
+    @include absolute(0, 0, 0, 0);
+  }
+
+  &__content {
+    position: relative;
+    z-index: 9;
+  }
+
+  .text-white {
+    .text-secondary {
+      color: lighten($secondary, 35%) !important;
+    }
+  }
+}

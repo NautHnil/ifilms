@@ -1,0 +1,315 @@
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+html,
+body,
+#root,
+#site {
+  height: 100%;
+}
+
+// Custom browser scrollbar
+::-webkit-scrollbar {
+  @include rem(
+    (
+      width: 8px,
+      height: 8px,
+    )
+  );
+  @include media-breakpoint-down(md) {
+    @include rem(
+      (
+        width: 4px,
+        height: 4px,
+      )
+    );
+  }
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: none;
+  background-color: $white;
+}
+
+::-webkit-scrollbar-thumb {
+  outline: none;
+  background-color: darken($light, 15%);
+
+  @include rem(
+    (
+      border-radius: 8px,
+    )
+  );
+  @include media-breakpoint-down(md) {
+    @include rem(
+      (
+        border-radius: 4px,
+      )
+    );
+  }
+}
+
+a {
+  cursor: pointer;
+  outline: none !important;
+
+  @include transition(all 0.25s ease);
+}
+
+img {
+  max-width: 100%;
+}
+
+.pointer-events--none {
+  pointer-events: none;
+}
+
+.overflow-x {
+  overflow: hidden;
+  overflow-x: auto;
+}
+
+.rounded-md {
+  border-radius: $border-radius-md !important;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+[data-waypoints="init"] {
+  @include vhidden();
+
+  &.animated {
+    @include vdisplay();
+  }
+}
+
+.shadow-custom {
+  box-shadow: 0 8px 10px rgba(0, 0, 0, 0.4);
+}
+
+.card-img-top__custom {
+  @include transition(all 0.3s ease);
+
+  &:hover {
+    transform: scale(1.02);
+  }
+}
+
+// Transition effect
+@for $var from 1 through 10 {
+  .transition-#{$var} {
+    @include transition(all #{$var/10}s ease);
+  }
+}
+
+// Whitespace
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    @each $prop, $abbrev in (white-space: ws) {
+      @each $val in nowrap, normal, pre, pre-line, pre-wrap {
+        .#{$abbrev}#{$infix}-#{$val} {
+          #{$prop}: $val !important;
+        }
+      }
+    }
+  }
+}
+
+// Width %
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    @each $prop,
+      $abbrev
+        in (
+          width: w,
+          max-width: mw,
+          height: h,
+          max-height: mh,
+          min-width: mnw,
+          min-height: mnh
+        )
+    {
+      @for $size from 0 through 100 {
+        .#{$abbrev}#{$infix}-#{$size} {
+          #{$prop}: #{$size}% !important;
+        }
+      }
+
+      @if ($abbrev == mw) {
+        .#{$abbrev}#{$infix}-auto {
+          #{$prop}: none !important;
+        }
+      } @else if ($abbrev == mh) {
+        .#{$abbrev}#{$infix}-auto {
+          #{$prop}: none !important;
+        }
+      } @else {
+        .#{$abbrev}#{$infix}-auto {
+          #{$prop}: auto !important;
+        }
+      }
+    }
+  }
+}
+
+// Line height
+@each $name, $val in $arr-line-height {
+  .lh-#{$name} {
+    line-height: $val !important;
+  }
+}
+
+// Font size
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    @each $prop, $abbrev in (font-size: fs) {
+      @each $size, $length in $arr-font-size {
+        .#{$abbrev}#{$infix}-#{$size} {
+          #{$prop}: $length !important;
+        }
+      }
+    }
+  }
+}
+
+// Font family
+@each $name, $val in $arr-font-family {
+  .#{$name} {
+    font-family: $val !important;
+  }
+}
+
+// Font weight
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    @each $prop, $abbrev in (font-weight: font-weight) {
+      @each $size, $length in $arr-font-weight {
+        .#{$abbrev}#{$infix}-#{$size} {
+          #{$prop}: $length !important;
+        }
+      }
+    }
+  }
+}
+
+// Colors
+@each $name, $val in $theme-colors {
+  .text-#{$name} {
+    color: $val !important;
+  }
+
+  .text-hover-#{$name}:hover,
+  a.text-hover-#{$name}:hover {
+    color: $val !important;
+  }
+
+  .bg-#{$name} {
+    background-color: $val !important;
+  }
+
+  .bg-hover-#{$name}:hover {
+    background-color: $val !important;
+  }
+
+  .border-#{$name} {
+    border-color: $val !important;
+  }
+}
+
+// Margin & Padding
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    @each $prop, $abbrev in (margin: m, padding: p) {
+      @each $size, $length in $mp {
+        .#{$abbrev}#{$infix}-#{$size} {
+          #{$prop}: $length !important;
+        }
+
+        .#{$abbrev}t#{$infix}-#{$size},
+        .#{$abbrev}y#{$infix}-#{$size} {
+          #{$prop}-top: $length !important;
+        }
+
+        .#{$abbrev}r#{$infix}-#{$size},
+        .#{$abbrev}x#{$infix}-#{$size} {
+          #{$prop}-right: $length !important;
+        }
+
+        .#{$abbrev}b#{$infix}-#{$size},
+        .#{$abbrev}y#{$infix}-#{$size} {
+          #{$prop}-bottom: $length !important;
+        }
+
+        .#{$abbrev}l#{$infix}-#{$size},
+        .#{$abbrev}x#{$infix}-#{$size} {
+          #{$prop}-left: $length !important;
+        }
+      }
+    }
+
+    // Some special margin utils
+    .m#{$infix}-auto {
+      margin: auto !important;
+    }
+
+    .mt#{$infix}-auto,
+    .my#{$infix}-auto {
+      margin-top: auto !important;
+    }
+
+    .mr#{$infix}-auto,
+    .mx#{$infix}-auto {
+      margin-right: auto !important;
+    }
+
+    .mb#{$infix}-auto,
+    .my#{$infix}-auto {
+      margin-bottom: auto !important;
+    }
+
+    .ml#{$infix}-auto,
+    .mx#{$infix}-auto {
+      margin-left: auto !important;
+    }
+  }
+}
+
+.line-clamp {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@for $val from 1 through 7 {
+  .line-clamp--#{$val} {
+    -webkit-line-clamp: $val;
+  }
+
+  .line-clamp--#{$val}-heading {
+    max-height: #{$val * $headings-line-height}rem;
+    -webkit-line-clamp: $val;
+  }
+
+  .border-width-#{$val} {
+    border-width: #{$val}px !important;
+  }
+}

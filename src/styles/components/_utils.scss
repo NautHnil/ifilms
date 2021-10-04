@@ -1,0 +1,249 @@
+#go-top {
+  z-index: 9;
+
+  @include rem(
+    (
+      width: 48px,
+      height: 48px,
+    )
+  );
+  @include fixed(null, -50px, 50px);
+  @include vhidden();
+  @include transition(all 0.25s ease);
+
+  &.on {
+    right: 10px;
+
+    @include vdisplay();
+  }
+}
+
+.filter-bg {
+  &.text-black {
+    .border {
+      border-color: $black !important;
+    }
+
+    .genres a,
+    .entry-header__top-crew a {
+      color: $black;
+
+      @include hover() {
+        color: lighten($black, 30%);
+      }
+    }
+  }
+  &.text-white {
+    .border {
+      border-color: $white !important;
+    }
+
+    .genres a,
+    .entry-header__top-crew a {
+      color: $white;
+
+      @include hover() {
+        color: darken($white, 30%);
+      }
+    }
+  }
+}
+
+.scroll-fade {
+  width: 60px;
+  height: 100%;
+  background-image: linear-gradient(to right, rgba($white, 0) 0%, $white 100%);
+  will-change: opacity;
+  pointer-events: none;
+
+  @include absolute(0, 0, 0);
+}
+
+.overlay {
+  &::before {
+    content: "";
+    @include overlay($movie-dark, 0.7);
+  }
+
+  > * {
+    position: relative;
+    z-index: 6;
+  }
+}
+
+.bg-default-style {
+  background-size: cover;
+  background-position: center -50px;
+
+  &-img {
+    background-image: url("/assets/images/bg-silver.svg");
+  }
+}
+
+.vote-average {
+  width: 48px;
+  height: 48px;
+  padding: 2px;
+  background-color: #081c22;
+  border-radius: 50%;
+
+  .progress--circle {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: darken(#21d07a, 30%);
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: calc(100% - 4px);
+      height: calc(100% - 4px);
+      border-radius: 50%;
+      background-color: #081c22;
+      transform: translate(-50%, -50%);
+    }
+
+    &::after {
+      content: "";
+      display: inline-block;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background-color: #21d07a;
+    }
+  }
+
+  &--sm {
+    width: 38px;
+    height: 38px;
+  }
+
+  &--md {
+    width: 48px;
+    height: 48px;
+
+    .progress__number {
+      @include rem(
+        (
+          font-size: 14px !important,
+        )
+      );
+    }
+  }
+
+  &--lg {
+    width: 68px;
+    height: 68px;
+    padding: 4px;
+
+    .progress--circle {
+      &::before {
+        width: calc(100% - 8px);
+        height: calc(100% - 8px);
+      }
+    }
+
+    .progress__number {
+      @include rem(
+        (
+          font-size: 18px !important,
+        )
+      );
+    }
+  }
+
+  .progress__number {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    line-height: 1;
+    text-align: center;
+    color: white;
+    transform: translateY(-50%);
+
+    @include rem(
+      (
+        font-size: 12px,
+      )
+    );
+  }
+
+  .progress__unit {
+    vertical-align: top;
+    opacity: 0.7;
+
+    @include rem(
+      (
+        font-size: 7px,
+      )
+    );
+  }
+
+  .progress--pie {
+    &::before {
+      display: none; /* Get rid of white circle for "pie chart style" meter */
+    }
+    .progress__number {
+      color: white;
+      text-shadow: rgba(black, 0.35) 1px 1px 1px;
+    }
+  }
+
+  /**
+  * $step is set to 5 by default, meaning you can only use percentage classes in increments of five (e.g. 25, 30, 45, 50, and so on). This helps to reduce the size of the final CSS file. If you need a number that doesn't end in 0 or 5, you can change the text percentage while rounding the class up/down to the nearest 5.
+  */
+  $step: 1;
+  $loops: round(100 / $step);
+  $increment: 360 / $loops;
+  $half: round($loops / 2);
+  $color: #21d07a;
+  @for $i from 0 through $loops {
+    @if ($i * $step) < 20 {
+      $color: #666;
+    } @else if ($i * $step) < 60 {
+      $color: #db2360;
+    } @else if ($i * $step) < 80 {
+      $color: #d1d431;
+    } @else if ($i * $step) <= 100 {
+      $color: #21d07a;
+    }
+    .progress--bar.progress--#{$i * $step}:after {
+      width: $i * $step * 1%;
+    }
+    .progress--circle.progress--#{$i * $step}:after {
+      @if $i < $half {
+        $nextDeg: 90deg + ($increment * $i);
+        background-image: linear-gradient(
+            90deg,
+            darken($color, 30%) 50%,
+            transparent 50%,
+            transparent
+          ),
+          linear-gradient(
+            $nextDeg,
+            $color 50%,
+            darken($color, 30%) 50%,
+            darken($color, 30%)
+          );
+      } @else {
+        $nextDeg: -90deg + ($increment * ($i - $half));
+        background-image: linear-gradient(
+            $nextDeg,
+            $color 50%,
+            transparent 50%,
+            transparent
+          ),
+          linear-gradient(
+            270deg,
+            $color 50%,
+            darken($color, 30%) 50%,
+            darken($color, 30%)
+          );
+      }
+    }
+  }
+}

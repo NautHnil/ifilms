@@ -1,0 +1,43 @@
+// Import variables
+@import "variables";
+
+// Import fonts
+//@import "font";
+
+// Import vendors
+@import "vendors/bootstrap-4.6.0/bootstrap";
+
+@import "vendors/fontawesome-5.15.2/scss/brands";
+@import "vendors/fontawesome-5.15.2/scss/duotone";
+@import "vendors/fontawesome-5.15.2/scss/fontawesome";
+@import "vendors/fontawesome-5.15.2/scss/light";
+@import "vendors/fontawesome-5.15.2/scss/regular";
+@import "vendors/fontawesome-5.15.2/scss/solid";
+@import "vendors/fontawesome-5.15.2/scss/v4-shims";
+
+// Import mixins
+@import "mixins";
+
+// Base
+@import "common/general";
+@import "common/button";
+@import "common/form";
+@import "common/type";
+@import "common/modal";
+@import "common/pagination";
+@import "common/tabs";
+@import "common/table";
+
+// Layouts
+@import "layouts/header";
+@import "layouts/sidebar";
+@import "layouts/main";
+@import "layouts/footer";
+
+// Components: Font icons of website
+
+// Components: Shortcode
+@import "components/utils";
+
+// Pages
+@import "pages/404";
