@@ -7,7 +7,7 @@ function Movie() {
   return (
     <MovieContextProvider>
       <section className={`pt-30 pb-50`}>
-        {SetMetaWeb("The MovieDB", true)}
+        {SetMetaWeb("Movies Discover", true)}
 
         <MoviePopular />
       </section>

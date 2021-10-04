@@ -5,7 +5,7 @@ const Logo = () => {
   return (
     <>
       <Link to={`/`} className="navbar-brand">
-        The MovieDB
+        iFilms
       </Link>
 
       <button
