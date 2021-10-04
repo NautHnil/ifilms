@@ -40,7 +40,10 @@ const Search = () => {
         ref={searchInput}
         onChange={(e) => handleChangeSearchKey(e)}
       />
-      <button className="btn btn-outline-success my-2 my-sm-0" type="submit">
+      <button
+        className="btn btn-outline-movie-green my-2 my-sm-0"
+        type="submit"
+      >
         Search
       </button>
     </form>

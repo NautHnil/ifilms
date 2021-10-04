@@ -107,9 +107,9 @@ const MovieDetailComponent = (props) => {
   };
 
   const getOriginalLanguage = (language) => {
-    const lang = movie.spoken_languages.find(
-      ({ iso_639_1 }) => iso_639_1 === language
-    );
+    const lang = !_.isEmpty(_.get(movie.spoken_languages))
+      ? movie.spoken_languages.find(({ iso_639_1 }) => iso_639_1 === language)
+      : { english_name: "-" };
 
     return lang.english_name;
   };

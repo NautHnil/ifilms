@@ -43,8 +43,7 @@ const MoviePopular = () => {
   useEffect(() => getMoviePopular(params), [params]);
 
   useEffect(() => {
-    let listMovie = [...listPageMovie, movie];
-    setListPageMovie(listMovie);
+    setListPageMovie((prevState) => [...prevState, movie]);
     setIsLoading(false);
   }, [movie]);
 
@@ -88,7 +87,7 @@ const MoviePopular = () => {
           {activePage < _.get(movie, "total_pages") && (
             <div>
               <button
-                className="btn btn-primary d-block rounded w-100"
+                className="btn btn-movie-green d-block rounded w-100"
                 onClick={() => onClickPage()}
               >
                 {isLoading ? (

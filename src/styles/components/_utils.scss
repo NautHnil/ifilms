@@ -3,8 +3,8 @@
 
   @include rem(
     (
-      width: 48px,
-      height: 48px,
+      width: 42px,
+      height: 42px,
     )
   );
   @include fixed(null, -50px, 50px);

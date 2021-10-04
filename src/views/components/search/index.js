@@ -6,6 +6,7 @@ import SearchResult from "./searchResult";
 import { ConfigContext } from "../../../contexts/configContext";
 import { SearchContext } from "../../../contexts/searchContext";
 import { useVisible } from "../../../hooks";
+import { scrollTop } from "../../../utils";
 
 const SearchComponent = (props) => {
   const { query } = props;
@@ -39,7 +40,7 @@ const SearchComponent = (props) => {
   const [tabType, setTabType] = useState(initialState.tabType);
   const [params, setParams] = useState(initialState.params);
 
-  const stickyTop = useVisible(200);
+  const stickyTop = useVisible(120);
 
   const getListSearchResult = (params) => {
     GetSearchMovie(params);
@@ -50,22 +51,20 @@ const SearchComponent = (props) => {
   const handleClickTab = (e, tab) => {
     e.preventDefault();
     setTabType(tab);
+    scrollTop();
   };
 
   const onClickPage = (page, type) => {
-    let newParams;
+    let newParams = { ...initialState.params, page };
 
     switch (type) {
       case "movie":
-        newParams = { ...initialState.params, page };
         return GetSearchMovie(newParams);
 
       case "tv":
-        newParams = { ...initialState.params, page };
         return GetSearchTV(newParams);
 
       case "collection":
-        newParams = { ...initialState.params, page };
         return GetSearchCollection(newParams);
 
       default:
@@ -79,9 +78,11 @@ const SearchComponent = (props) => {
   }, []);
 
   useEffect(() => {
-    const newParams = { ...initialState.params, query };
-    setParams(newParams);
-    getListSearchResult(newParams);
+    setParams((prevState) => {
+      let newParams = { ...prevState, query };
+      getListSearchResult(newParams);
+      return newParams;
+    });
     setTabType(initialState.tabType);
   }, [query]);
 
@@ -147,7 +148,7 @@ const SearchComponent = (props) => {
         <div className={`col-lg-3`}>
           <div
             className={`list-group sticky-top transition-2${
-              stickyTop ? " pt-30" : ""
+              stickyTop ? " pt-110" : ""
             }`}
           >
             <Link

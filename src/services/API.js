@@ -8,6 +8,7 @@ const get = (path, data = {}, headers = null) => {
     .get(`${endpoint}${path}`, {
       timeout: 20000,
       headers: {
+        ...headers,
         Accept: "application/json",
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
@@ -31,6 +32,7 @@ const post = (path, data = {}, headers = null) => {
   return axios
     .post(`${endpoint}${path}`, data, {
       timeout: 20000,
+      headers,
     })
     .catch((error) => {
       if (!error.response) {
